@@ -1,4 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#0f172a"/>
-  <path d="M9 22V10L16 17L23 10V22" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- 2x2 Modular Bento Grid (M, R on top; Dot, T on bottom -> "MR. T") -->
+  <rect width="64" height="64" rx="14" fill="#161412"/>
+
+  <!-- Top-Left: Terracotta M Tile -->
+  <rect x="6" y="6" width="24" height="24" rx="6" fill="#e07a5f"/>
+  <path d="M11 24.5V11.5H15.2L18 16.8L20.8 11.5H25V24.5H21.2V17L18 22.8L14.8 17V24.5H11Z" fill="#f4f1de"/>
+
+  <!-- Top-Right: Sage Green R Tile -->
+  <rect x="34" y="6" width="24" height="24" rx="6" fill="#81b29a"/>
+  <path d="M40.5 24.5V11.5H46.8C49.3 11.5 51 13 51 15.4C51 17.2 50 18.5 48.3 19L51.2 24.5H47.6L45.2 19.4H43.9V24.5H40.5ZM43.9 16.8H46.3C47.2 16.8 47.8 16.2 47.8 15.4C47.8 14.6 47.2 14 46.3 14H43.9V16.8Z" fill="#f4f1de"/>
+
+  <!-- Bottom-Left: Warm Stone Period/Dot Tile (".") -->
+  <rect x="6" y="34" width="24" height="24" rx="6" fill="#262320"/>
+  <circle cx="18" cy="46" r="4.5" fill="#e07a5f"/>
+
+  <!-- Bottom-Right: Mustard Ochre T Tile -->
+  <rect x="34" y="34" width="24" height="24" rx="6" fill="#f2cc8f"/>
+  <path d="M39.5 39.5H52.5V42.8H47.8V52.5H44.2V42.8H39.5V39.5Z" fill="#161412"/>
 </svg>

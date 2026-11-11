@@ -8,7 +8,7 @@
 		<div class="badge">@{siteMeta.githubHandle} &bull; Engineering Log</div>
 		<h1>Projects, experiments, and write-ups.</h1>
 		<p class="hero-subtitle">
-			A home for the software projects I’m building on GitHub—pairing repositories with technical
+			A home for the software projects I'm building on GitHub. Pairing repositories with candid
 			notes on how they work, architectural trade-offs, and lessons learned.
 		</p>
 		<div class="hero-actions">
@@ -27,7 +27,7 @@
 	<section id="projects" class="section">
 		<div class="section-header">
 			<h2>Featured Projects</h2>
-			<span class="section-count">{projects.length} repo{projects.length === 1 ? '' : 's'}</span>
+			<span class="section-count">{projects.length} project{projects.length === 1 ? '' : 's'}</span>
 		</div>
 
 		<div class="projects-grid">
@@ -37,9 +37,17 @@
 						<div>
 							<span class="status-pill">{project.status}</span>
 							<h3>
-								<a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-									{project.title} ↗
-								</a>
+								{#if project.liveUrl || project.repoUrl}
+									<a
+										href={project.liveUrl || project.repoUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{project.title} ↗
+									</a>
+								{:else}
+									{project.title}
+								{/if}
 							</h3>
 						</div>
 					</div>
@@ -51,15 +59,35 @@
 							{/each}
 						</div>
 						<div class="project-links">
-							<a
-								href={project.repoUrl}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="card-link"
-							>
-								GitHub Repo ↗
-							</a>
-							{#if project.relatedPostSlug}
+							{#if project.liveUrl}
+								<a
+									href={project.liveUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="card-link"
+								>
+									Live App ↗
+								</a>
+							{/if}
+							{#if project.repoUrl}
+								<a
+									href={project.repoUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="card-link"
+								>
+									GitHub Repo ↗
+								</a>
+							{:else}
+								<span class="private-pill">Private Repo</span>
+							{/if}
+							{#if project.relatedPosts && project.relatedPosts.length > 0}
+								{#each project.relatedPosts as rel}
+									<a href="{base}/posts/{rel.slug}/" class="card-link accent">
+										{rel.label} →
+									</a>
+								{/each}
+							{:else if project.relatedPostSlug}
 								<a href="{base}/posts/{project.relatedPostSlug}/" class="card-link accent">
 									Read Write-up →
 								</a>
@@ -93,6 +121,16 @@
 								class="repo-badge"
 							>
 								{post.repoName} ↗
+							</a>
+						{:else if post.liveUrl && post.liveLabel}
+							<span>&bull;</span>
+							<a
+								href={post.liveUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="repo-badge"
+							>
+								{post.liveLabel} ↗
 							</a>
 						{/if}
 					</div>
@@ -154,7 +192,7 @@
 
 	.btn-primary {
 		background: var(--accent);
-		color: #082f49;
+		color: #141210;
 		font-weight: 600;
 	}
 
@@ -218,11 +256,11 @@
 		display: inline-block;
 		font-family: var(--font-mono);
 		font-size: 0.7rem;
-		color: #34d399;
-		background: rgba(52, 211, 153, 0.1);
-		border: 1px solid rgba(52, 211, 153, 0.25);
+		color: var(--sage);
+		background: var(--sage-soft);
+		border: 1px solid var(--sage-border);
 		padding: 0.1rem 0.5rem;
-		border-radius: 999px;
+		border-radius: 6px;
 		margin-bottom: 0.5rem;
 	}
 
@@ -271,6 +309,16 @@
 
 	.card-link:hover {
 		color: var(--text);
+	}
+
+	.private-pill {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		color: var(--text-subtle);
+		background: var(--bg-elevated);
+		border: 1px solid var(--border);
+		padding: 0.15rem 0.5rem;
+		border-radius: 6px;
 	}
 
 	.card-link.accent,

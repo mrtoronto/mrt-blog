@@ -9,12 +9,24 @@
 <svelte:head>
 	<title>{siteMeta.title}</title>
 	<meta name="description" content={siteMeta.description} />
+	<meta property="og:site_name" content={siteMeta.author} />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={siteMeta.title} />
+	<meta property="og:description" content={siteMeta.description} />
+	<meta property="og:url" content={siteMeta.siteUrl} />
+	<meta property="og:image" content={siteMeta.ogImage} />
+	<meta property="og:image:width" content="1376" />
+	<meta property="og:image:height" content="768" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={siteMeta.title} />
+	<meta name="twitter:description" content={siteMeta.description} />
+	<meta name="twitter:image" content={siteMeta.ogImage} />
 </svelte:head>
 
 <header class="site-header">
 	<div class="container header-inner">
 		<a href="{base}/" class="brand">
-			<span class="brand-mark">M</span>
+			<img src="{base}/logo.svg" alt="MR. T" class="brand-logo" width="108" height="30" />
 			<span class="brand-text">{siteMeta.author}</span>
 		</a>
 		<nav class="nav-links">
@@ -50,7 +62,7 @@
 <style>
 	.site-header {
 		border-bottom: 1px solid var(--border);
-		background: rgba(11, 15, 23, 0.85);
+		background: rgba(20, 18, 16, 0.88);
 		backdrop-filter: blur(10px);
 		position: sticky;
 		top: 0;
@@ -67,25 +79,21 @@
 	.brand {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.65rem;
+		gap: 0.75rem;
 		font-weight: 600;
 		font-size: 1rem;
 		letter-spacing: -0.01em;
 	}
 
-	.brand-mark {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 1.85rem;
-		height: 1.85rem;
-		border-radius: 7px;
-		background: var(--accent-soft);
-		color: var(--accent);
-		border: 1px solid var(--accent-border);
-		font-family: var(--font-mono);
-		font-weight: 600;
-		font-size: 0.9rem;
+	.brand-logo {
+		height: 1.75rem;
+		width: auto;
+		display: block;
+		transition: transform 0.15s ease;
+	}
+
+	.brand:hover .brand-logo {
+		transform: translateY(-1px);
 	}
 
 	.nav-links {

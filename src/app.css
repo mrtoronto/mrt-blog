@@ -1,16 +1,22 @@
 :root {
-	--bg: #0b0f17;
-	--bg-elevated: #111827;
-	--bg-card: #151e2e;
-	--bg-code: #090d14;
-	--border: #1e293b;
-	--border-hover: #334155;
-	--text: #f1f5f9;
-	--text-muted: #94a3b8;
-	--text-subtle: #64748b;
-	--accent: #38bdf8;
-	--accent-soft: rgba(56, 189, 248, 0.12);
-	--accent-border: rgba(56, 189, 248, 0.3);
+	color-scheme: dark;
+	--bg: #141210;
+	--bg-elevated: #1c1917;
+	--bg-card: #211e1b;
+	--bg-code: #0f0e0c;
+	--border: #2e2925;
+	--border-hover: #443d37;
+	--text: #f4f1de;
+	--text-body: #d6d0c4;
+	--text-muted: #a8a096;
+	--text-subtle: #78716c;
+	--accent: #e07a5f;
+	--accent-soft: rgba(224, 122, 95, 0.14);
+	--accent-border: rgba(224, 122, 95, 0.35);
+	--sage: #81b29a;
+	--sage-soft: rgba(129, 178, 154, 0.14);
+	--sage-border: rgba(129, 178, 154, 0.32);
+	--ochre: #f2cc8f;
 	--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 	--font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
@@ -44,6 +50,37 @@ a {
 code,
 pre {
 	font-family: var(--font-mono);
+	tab-size: 2;
+}
+
+/* Subtle dark scrollbars */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--border-hover) transparent;
+}
+
+*::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--border);
+	border-radius: 999px;
+	border: 2px solid transparent;
+	background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background-color: var(--border-hover);
+}
+
+*::-webkit-scrollbar-corner {
+	background: transparent;
 }
 
 .container {
@@ -60,8 +97,8 @@ pre {
 	font-family: var(--font-mono);
 	font-size: 0.75rem;
 	font-weight: 500;
-	padding: 0.2rem 0.6rem;
-	border-radius: 9999px;
+	padding: 0.2rem 0.65rem;
+	border-radius: 6px;
 	background: var(--accent-soft);
 	color: var(--accent);
 	border: 1px solid var(--accent-border);
@@ -72,7 +109,7 @@ pre {
 	font-size: 0.72rem;
 	padding: 0.15rem 0.55rem;
 	border-radius: 6px;
-	background: rgba(148, 163, 184, 0.1);
+	background: rgba(168, 160, 150, 0.08);
 	color: var(--text-muted);
 	border: 1px solid var(--border);
 }

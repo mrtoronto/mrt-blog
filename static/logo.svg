@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 30" fill="none">
+  <!-- M Tile -->
+  <rect x="0" y="0" width="30" height="30" rx="7" fill="#e07a5f"/>
+  <path d="M6.5 22.5V7.5H11.2L15 14L18.8 7.5H23.5V22.5H19.2V14L15 20.8L10.8 14V22.5H6.5Z" fill="#f4f1de"/>
+  
+  <!-- R Tile -->
+  <rect x="34" y="0" width="30" height="30" rx="7" fill="#81b29a"/>
+  <path d="M42 22.5V7.5H49.5C52.5 7.5 54.5 9.2 54.5 12C54.5 14.1 53.3 15.6 51.3 16.2L54.7 22.5H50.4L47.6 16.6H46V22.5H42ZM46 13.6H48.9C50 13.6 50.7 13 50.7 12C50.7 11 50 10.4 48.9 10.4H46V13.6Z" fill="#f4f1de"/>
+
+  <!-- Subtle Terracotta Dot at baseline -->
+  <circle cx="71" cy="24.5" r="3.5" fill="#e07a5f"/>
+  
+  <!-- T Tile -->
+  <rect x="78" y="0" width="30" height="30" rx="7" fill="#f2cc8f"/>
+  <path d="M85 7.5H101V11.3H95.1V22.5H90.9V11.3H85V7.5Z" fill="#141210"/>
+</svg>
