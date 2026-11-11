@@ -73,6 +73,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		gap: 0.75rem;
 		height: 4rem;
 	}
 
@@ -83,12 +84,15 @@
 		font-weight: 600;
 		font-size: 1rem;
 		letter-spacing: -0.01em;
+		white-space: nowrap;
+		flex-shrink: 0;
 	}
 
 	.brand-logo {
 		height: 1.75rem;
 		width: auto;
 		display: block;
+		flex-shrink: 0;
 		transition: transform 0.15s ease;
 	}
 
@@ -102,9 +106,14 @@
 		gap: 1.5rem;
 		font-size: 0.9rem;
 		color: var(--text-muted);
+		white-space: nowrap;
+		flex-shrink: 0;
 	}
 
 	.nav-links a {
+		display: inline-flex;
+		align-items: center;
+		min-height: 2.25rem;
 		transition: color 0.15s ease;
 	}
 
@@ -116,6 +125,7 @@
 		font-family: var(--font-mono);
 		font-size: 0.8rem;
 		padding: 0.35rem 0.7rem;
+		min-height: 0 !important;
 		border-radius: 6px;
 		border: 1px solid var(--border);
 		background: var(--bg-elevated);
@@ -127,6 +137,8 @@
 
 	.site-main {
 		flex: 1;
+		width: 100%;
+		min-width: 0;
 		padding: 3.5rem 0 5rem;
 	}
 
@@ -142,7 +154,7 @@
 		justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
-		gap: 1rem;
+		gap: 0.75rem 1rem;
 	}
 
 	.footer-inner a {
@@ -152,5 +164,39 @@
 
 	.footer-inner a:hover {
 		color: var(--accent);
+	}
+
+	@media (max-width: 600px) {
+		.header-inner {
+			height: 3.5rem;
+			gap: 0.5rem;
+		}
+
+		.brand-text {
+			display: none;
+		}
+
+		.brand-logo {
+			height: 1.45rem;
+		}
+
+		.nav-links {
+			gap: 0.75rem;
+			font-size: 0.82rem;
+		}
+
+		.github-link {
+			font-size: 0.74rem;
+			padding: 0.26rem 0.5rem;
+		}
+
+		.site-main {
+			padding: 2rem 0 3.5rem;
+		}
+
+		.site-footer {
+			padding: 1.5rem 0;
+			font-size: 0.8rem;
+		}
 	}
 </style>

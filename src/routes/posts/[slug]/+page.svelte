@@ -192,6 +192,10 @@
 </article>
 
 <style>
+	.article {
+		min-width: 0;
+	}
+
 	.back-link {
 		display: inline-block;
 		font-family: var(--font-mono);
@@ -213,6 +217,7 @@
 	.article-meta {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
 		gap: 0.5rem;
 		font-family: var(--font-mono);
 		font-size: 0.8rem;
@@ -221,16 +226,18 @@
 	}
 
 	h1 {
-		font-size: clamp(1.75rem, 4vw, 2.4rem);
+		font-size: clamp(1.6rem, 4.5vw, 2.4rem);
 		line-height: 1.2;
 		letter-spacing: -0.025em;
 		margin-bottom: 1rem;
+		overflow-wrap: break-word;
 	}
 
 	.article-summary {
 		font-size: 1.1rem;
 		color: var(--text-muted);
 		margin-bottom: 1.5rem;
+		overflow-wrap: break-word;
 	}
 
 	.header-footer {
@@ -250,7 +257,9 @@
 	.repo-callout {
 		display: inline-flex;
 		align-items: center;
+		flex-wrap: wrap;
 		gap: 0.45rem;
+		max-width: 100%;
 		font-family: var(--font-mono);
 		font-size: 0.8rem;
 		padding: 0.4rem 0.75rem;
@@ -262,6 +271,7 @@
 
 	.repo-callout strong {
 		color: var(--accent);
+		overflow-wrap: anywhere;
 	}
 
 	/* Top-of-Post Overview Card */
@@ -272,6 +282,7 @@
 		border-radius: 10px;
 		padding: 1.25rem 1.35rem;
 		margin-bottom: 2.5rem;
+		min-width: 0;
 	}
 
 	.overview-header {
@@ -294,6 +305,11 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
+		overflow-wrap: break-word;
+	}
+
+	.overview-bullets li {
+		min-width: 0;
 	}
 
 	.overview-toc {
@@ -309,7 +325,7 @@
 		color: var(--sage);
 		user-select: none;
 		list-style: none;
-		display: inline-flex;
+		display: flex;
 		align-items: center;
 		gap: 0.45rem;
 	}
@@ -321,6 +337,7 @@
 	.overview-toc summary::before {
 		content: '▸';
 		display: inline-block;
+		flex-shrink: 0;
 		transition: transform 0.15s ease;
 	}
 
@@ -345,6 +362,7 @@
 		font-size: 0.84rem;
 		color: var(--text);
 		font-weight: 500;
+		overflow-wrap: break-word;
 	}
 
 	.toc-link:hover {
@@ -355,6 +373,7 @@
 		font-size: 0.86rem;
 		color: var(--text-muted);
 		margin-top: 0.15rem;
+		overflow-wrap: break-word;
 	}
 
 	/* Article Body */
@@ -362,10 +381,13 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2.25rem;
+		min-width: 0;
 	}
 
 	.article-section {
-		scroll-margin-top: 5.5rem;
+		scroll-margin-top: 4.75rem;
+		min-width: 0;
+		max-width: 100%;
 	}
 
 	.article-section h2 {
@@ -373,12 +395,14 @@
 		letter-spacing: -0.015em;
 		margin-bottom: 0.9rem;
 		color: var(--text);
+		overflow-wrap: break-word;
 	}
 
 	.article-section p {
 		color: var(--text-body);
 		font-size: 1.02rem;
 		margin-bottom: 1rem;
+		overflow-wrap: break-word;
 	}
 
 	.article-section ul {
@@ -387,6 +411,11 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.55rem;
+		overflow-wrap: break-word;
+	}
+
+	.article-section li {
+		min-width: 0;
 	}
 
 	/* Inline formatting inside {@html} */
@@ -398,6 +427,8 @@
 		background: var(--bg-elevated);
 		border: 1px solid var(--border);
 		color: var(--ochre);
+		overflow-wrap: anywhere;
+		word-break: break-word;
 	}
 
 	.article :global(strong) {
@@ -409,6 +440,7 @@
 		color: var(--accent);
 		text-decoration: underline;
 		text-underline-offset: 3px;
+		overflow-wrap: anywhere;
 	}
 
 	/* Code Blocks & Syntax Highlighting */
@@ -418,12 +450,14 @@
 		border: 1px solid var(--border);
 		background: var(--bg-code);
 		overflow: hidden;
+		max-width: 100%;
 	}
 
 	.code-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		gap: 0.75rem;
 		padding: 0.55rem 1rem;
 		background: var(--bg-elevated);
 		border-bottom: 1px solid var(--border);
@@ -432,15 +466,22 @@
 		color: var(--text-muted);
 	}
 
+	.code-header span:first-child {
+		min-width: 0;
+		overflow-wrap: anywhere;
+	}
+
 	.code-lang {
 		color: var(--ochre);
+		flex-shrink: 0;
 	}
 
 	.code-pre {
 		padding: 1.1rem 1.25rem;
 		overflow-x: auto;
-		overflow-y: auto;
-		max-height: 28rem;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+		max-width: 100%;
 		font-size: 0.85rem;
 		line-height: 1.6;
 		color: var(--text);
@@ -491,6 +532,7 @@
 		border: 1px solid var(--border);
 		background: var(--bg-elevated);
 		overflow: hidden;
+		max-width: 100%;
 	}
 
 	.deep-dive summary {
@@ -498,13 +540,15 @@
 		padding: 0.75rem 1rem;
 		font-family: var(--font-mono);
 		font-size: 0.83rem;
+		line-height: 1.45;
 		font-weight: 500;
 		color: var(--ochre);
 		user-select: none;
 		list-style: none;
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		gap: 0.5rem;
+		overflow-wrap: break-word;
 	}
 
 	.deep-dive summary::-webkit-details-marker {
@@ -514,6 +558,7 @@
 	.deep-dive summary::before {
 		content: '▸';
 		display: inline-block;
+		flex-shrink: 0;
 		color: var(--accent);
 		transition: transform 0.15s ease;
 	}
@@ -532,11 +577,13 @@
 
 	.deep-dive-body {
 		padding: 1rem 1.15rem;
+		min-width: 0;
 	}
 
 	.deep-dive-body p {
 		font-size: 0.95rem;
 		margin-bottom: 0.75rem;
+		overflow-wrap: break-word;
 	}
 
 	.deep-dive-body p:last-child {
@@ -579,6 +626,7 @@
 		border: 1px solid var(--border);
 		border-radius: 8px;
 		padding: 0.65rem 0.85rem;
+		min-width: 0;
 	}
 
 	.team-item dt {
@@ -593,5 +641,74 @@
 		font-size: 0.86rem;
 		color: var(--text);
 		font-weight: 500;
+		overflow-wrap: break-word;
+	}
+
+	@media (max-width: 600px) {
+		.back-link {
+			margin-bottom: 1.25rem;
+		}
+
+		.article-header {
+			padding-bottom: 1.5rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.article-summary {
+			font-size: 1rem;
+			margin-bottom: 1.25rem;
+		}
+
+		.overview-card {
+			padding: 1.05rem 1.1rem;
+			margin-bottom: 2rem;
+		}
+
+		.overview-bullets {
+			margin-left: 1.05rem;
+			font-size: 0.92rem;
+		}
+
+		.article-body {
+			gap: 1.85rem;
+		}
+
+		.article-section h2 {
+			font-size: 1.2rem;
+		}
+
+		.article-section p,
+		.article-section ul {
+			font-size: 0.97rem;
+		}
+
+		.article-section ul {
+			margin-left: 1.15rem;
+		}
+
+		.code-header {
+			padding: 0.5rem 0.85rem;
+			font-size: 0.73rem;
+		}
+
+		.code-pre {
+			padding: 0.9rem 0.95rem;
+			font-size: 0.78rem;
+			line-height: 1.55;
+		}
+
+		.deep-dive summary {
+			padding: 0.7rem 0.85rem;
+			font-size: 0.78rem;
+		}
+
+		.deep-dive-body {
+			padding: 0.85rem 0.95rem;
+		}
+
+		.team-footer {
+			margin-top: 2.5rem;
+			padding: 1.15rem;
+		}
 	}
 </style>

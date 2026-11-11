@@ -234,7 +234,7 @@
 
 	.projects-grid {
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 1.25rem;
 	}
 
@@ -244,6 +244,7 @@
 		border: 1px solid var(--border);
 		border-radius: 12px;
 		padding: 1.5rem;
+		min-width: 0;
 		transition: border-color 0.15s ease, transform 0.15s ease;
 	}
 
@@ -268,6 +269,7 @@
 		font-size: 1.2rem;
 		font-family: var(--font-mono);
 		margin-bottom: 0.5rem;
+		overflow-wrap: break-word;
 	}
 
 	.project-card h3 a:hover {
@@ -278,6 +280,7 @@
 		color: var(--text-muted);
 		font-size: 0.96rem;
 		margin-bottom: 1.25rem;
+		overflow-wrap: break-word;
 	}
 
 	.project-footer,
@@ -286,7 +289,7 @@
 		align-items: center;
 		justify-content: space-between;
 		flex-wrap: wrap;
-		gap: 1rem;
+		gap: 0.85rem 1rem;
 	}
 
 	.tags {
@@ -298,13 +301,15 @@
 	.project-links {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		flex-wrap: wrap;
+		gap: 0.55rem 1rem;
 		font-size: 0.85rem;
 		font-weight: 500;
 	}
 
 	.card-link {
 		color: var(--text-muted);
+		white-space: nowrap;
 	}
 
 	.card-link:hover {
@@ -319,6 +324,7 @@
 		border: 1px solid var(--border);
 		padding: 0.15rem 0.5rem;
 		border-radius: 6px;
+		white-space: nowrap;
 	}
 
 	.card-link.accent,
@@ -326,19 +332,21 @@
 		color: var(--accent);
 		font-size: 0.88rem;
 		font-weight: 500;
+		white-space: nowrap;
 	}
 
 	.posts-list {
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
+		min-width: 0;
 	}
 
 	.post-meta {
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
-		gap: 0.55rem;
+		gap: 0.35rem 0.55rem;
 		font-family: var(--font-mono);
 		font-size: 0.78rem;
 		color: var(--text-subtle);
@@ -347,6 +355,7 @@
 
 	.repo-badge {
 		color: var(--accent);
+		overflow-wrap: anywhere;
 	}
 
 	.repo-badge:hover {
@@ -357,6 +366,7 @@
 		font-size: 1.3rem;
 		line-height: 1.35;
 		margin-bottom: 0.65rem;
+		overflow-wrap: break-word;
 	}
 
 	.post-title a:hover {
@@ -367,5 +377,43 @@
 		color: var(--text-muted);
 		font-size: 0.96rem;
 		margin-bottom: 1.25rem;
+		overflow-wrap: break-word;
+	}
+
+	@media (max-width: 600px) {
+		.hero {
+			padding: 0.5rem 0 2.5rem;
+		}
+
+		h1 {
+			font-size: 1.85rem;
+			margin: 0.85rem 0 0.9rem;
+		}
+
+		.hero-subtitle {
+			font-size: 1rem;
+			margin-bottom: 1.35rem;
+		}
+
+		.section {
+			padding-top: 2.5rem;
+		}
+
+		.section-header {
+			margin-bottom: 1.15rem;
+		}
+
+		.section-header h2 {
+			font-size: 1.2rem;
+		}
+
+		.project-card,
+		.post-card {
+			padding: 1.2rem;
+		}
+
+		.post-title {
+			font-size: 1.15rem;
+		}
 	}
 </style>
